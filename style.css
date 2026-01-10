@@ -1,0 +1,223 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base */
+body {
+  height: 100vh;
+  background: #fbf7df;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Floating background emojis */
+.float span {
+  position: absolute;
+  animation: float 14s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+  font-size: 18px;
+}
+
+.float span:nth-child(1){left:10%;animation-delay:0s;}
+.float span:nth-child(2){left:30%;animation-delay:3s;}
+.float span:nth-child(3){left:55%;animation-delay:6s;}
+.float span:nth-child(4){left:80%;animation-delay:9s;}
+
+@keyframes float {
+  0% { top: 100%; }
+  100% { top: -10%; }
+}
+
+/* Screens */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.screen.active {
+  display: flex;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Screen 1 */
+#screen1 h1 {
+  font-family: "Script MT Bold", "Brush Script MT", cursive;
+  font-size: 72px;
+  color: #7a3b2e;
+}
+
+.romantic-emojis {
+  margin-top: 10px;
+  font-size: 26px;
+}
+
+.caption {
+  margin: 18px 0;
+  font-size: 18px;
+  color: #7a3b2e;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 34px;
+  border: none;
+  border-radius: 30px;
+  background: #f08080;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Screen 2 */
+#screen2 {
+  background: #fbf7df;
+}
+
+#screen2 h2 {
+  font-family: "Script MT Bold", cursive;
+  font-size: 44px;
+  margin-bottom: 28px;
+  color: #7a3b2e;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  gap: 28px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  transition: transform 0.6s ease;
+}
+
+.card img {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: transform 0.6s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: rgba(240,128,128,.92);
+  color: white;
+  font-family: "Script MT Bold", cursive;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18px;
+  opacity: 0;
+  transition: .4s;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* Screen 3 */
+#screen3 {
+  background: linear-gradient(135deg, #6a5acd, #836fff);
+}
+
+.message-box {
+  background: rgba(255,255,255,.15);
+  padding: 42px;
+  border-radius: 22px;
+  width: 620px;
+  text-align: center;
+  color: white;
+}
+
+.message-box h2 {
+  font-family: "Script MT Bold", cursive;
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.signature {
+  margin-top: 22px;
+  font-style: italic;
+  color: #ffe4e1;
+}
+
+.hearts {
+  margin-top: 16px;
+  font-size: 26px;
+}
+
+/* ================= GLOBAL FLOATING HEART PARTICLES ================= */
+#heart-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+#heart-particles span {
+  position: absolute;
+  bottom: -20px;
+  font-size: 16px;
+  color: rgba(255, 105, 180, 0.65);
+  animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ================= CURSOR HEART TRAIL ================= */
+.cursor-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 14px;
+  color: rgba(255, 20, 147, 0.8);
+  animation: trailFade 1.2s ease forwards;
+}
+
+@keyframes trailFade {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -90%) scale(1.6);
+    opacity: 0;
+  }
+}
