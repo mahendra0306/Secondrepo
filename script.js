@@ -46,11 +46,22 @@ startBtn.onclick = () => {
   s2.classList.add("active");
 };
 
-/* Screen 2 → Screen 3 (click anywhere) */
-s2.addEventListener("click", () => {
-  s2.classList.remove("active");
-  s3.classList.add("active");
+/* Screen 2 → Screen 3 (tap background only) */
+s2.addEventListener("click", (e) => {
+  // Only move if user taps the background, not images
+  if (e.target === s2) {
+    s2.classList.remove("active");
+    s3.classList.add("active");
+  }
 });
+
+/* Prevent image taps from triggering page change */
+document.querySelectorAll(".card, .card img").forEach(el => {
+  el.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+});
+
 
 /* Cursor heart trail */
 document.addEventListener("mousemove", (e) => {
