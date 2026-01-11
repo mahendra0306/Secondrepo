@@ -1,5 +1,5 @@
 /* Typing animation */
-const text = "Happy Birthday, AMMU🤍";
+const text = "Happy Birthday, Ammu🤍";
 const typing = document.getElementById("typing");
 let i = 0;
 
